@@ -1,11 +1,54 @@
-from queue import PriorityQueue
-from typing import Tuple
+import json
+import logging
+from typing import Dict, List
 
+from flask import request
 
-def heuristic(cell1: Tuple[int, int], cell2: Tuple[int, int]) -> int:
-    x1, y1 = cell1
-    x2, y2 = cell2
+from routes import app
 
-    return abs(x1 - x2) + abs(y1 - y2)
+logger = logging.getLogger(__name__)
+WALL = 0
+EMPTY = 1
+SPAWN = 2
+END = 3
 
-# def a_star(maze: )
+maze = None
+width = 0
+current_position = None
+
+def initialize_maze(data):
+    global maze, width, current_position
+    maze = data["nearby"]
+    width = data["mazeWidth"]
+    current_position = (1, 1) 
+
+def is_valid_move(x, y):
+    return 0 <= x < width and 0 <= y < width and maze[x][y] != WALL
+
+def get_next_move(data):
+    initialize_maze(data)
+    possible_moves = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+
+    for move in possible_moves:
+        x, y = current_position[0] + move[0], current_position[1] + move[1]
+
+        if is_valid_move(x, y):
+            if move == (0, 1):
+                return "up"
+            elif move == (1, 0):
+                return "right"
+            elif move == (0, -1):
+                return "down"
+            elif move == (-1, 0):
+                return "left"
+    return "respawn"
+
+@app.route('/maze', methods=['POST'])
+def evaluate_maze():
+    data = request.get_json()
+    logging.info("data sent for evaluation {}".format(data))
+
+    res: {str: str} = {"playerAction" : get_next_move(data)}
+
+    logging.info("My result :{}".format(res))
+    return json.dumps(res)
