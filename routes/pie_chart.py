@@ -31,7 +31,7 @@ def calculate_pie_chart_angles(data):
         if instrument_list[instrument] < minimum_investment:
             instrument_list[instrument] = minimum_investment
     total_investment = sum(instrument_list)
-    proportions = [(instrument / total_investment) * 100 for instrument in instrument_list]
+    proportions = [(instrument / total_investment) for instrument in instrument_list]
     
     # Sort instruments based on proportions in descending order
     proportions = sorted(proportions, reverse=True)
