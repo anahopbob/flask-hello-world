@@ -7,4 +7,5 @@ from routes import lazy_developer
 from routes import ctf
 from routes import greedy
 from routes import maze
+from routes import pie_chart
 
