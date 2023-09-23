@@ -24,7 +24,7 @@ def calculate_pie_chart_angles(data):
     instruments = data["data"]
     
     # Calculate total investment in the portfolio
-    total_investment = [sum(instrument["quantity"] * instrument["price"] for instrument in instruments)]
+    total_investment = [instrument["quantity"] * instrument["price"] for instrument in instruments]
     print("TOTAL INVESTMENTS", total_investment)
     # Calculate proportions (percentages) of each instrument's investment relative to the total
     proportions = [(instrument["quantity"] * instrument["price"] / total_investment) * 100 for instrument in instruments]
