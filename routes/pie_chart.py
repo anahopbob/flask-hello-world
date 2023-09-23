@@ -31,17 +31,17 @@ def calculate_pie_chart_angles(data):
     temp = 0
     logging.info("My proportions :{}".format(proportions))
     for proportion in range(len(proportions)):
-        if proportions[proportion] < 0.05:
-            proportions[proportion] = 0.05
+        if proportions[proportion] < 0.0005:
+            proportions[proportion] = 0.0005
             temp += 1
         else:
             unadjusted_proportions.append(proportions[proportion])
     new_total = sum(unadjusted_proportions)
     final = []
     for proportion in unadjusted_proportions:
-        final.append((proportion / new_total) * (1-temp*0.05))
+        final.append((proportion / new_total) * (1-temp*0.0005))
     for i in range(temp):
-        final.append(0.05)
+        final.append(0.0005)
     # Sort instruments based on proportions in descending order
     final = sorted(final, reverse=True)
     # Calculate angles for the boundaries of the slices/arcs of the pie chart
