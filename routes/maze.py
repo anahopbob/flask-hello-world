@@ -20,7 +20,6 @@ def initialize_maze(data):
     current_position = (1, 1) 
 
 def is_valid_move(x, y):
-    logging.info("NEW MOVE IS {}".format(maze[x][y]))
 
     return 0 <= x < width and 0 <= y < width and maze[x][y] != 0
 
@@ -30,7 +29,7 @@ def get_next_move(data):
 
     for move in possible_moves:
         x, y = current_position[0] + move[0], current_position[1] + move[1]
-
+        logging.info("NEW MOVE IS {}".format(maze[x][y]))
         if is_valid_move(x, y):
             if move == (0, 1):
                 return "down"
