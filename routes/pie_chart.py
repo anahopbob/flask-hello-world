@@ -29,6 +29,7 @@ def calculate_pie_chart_angles(data):
     proportions = [(instrument / total_investment) for instrument in instrument_list]
     unadjusted_proportions = []
     temp = 0
+    logging.info("My proportions :{}".format(proportions))
     for proportion in range(len(proportions)):
         if proportions[proportion] < 0.05:
             proportions[proportion] = 0.05
