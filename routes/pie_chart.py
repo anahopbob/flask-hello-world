@@ -28,8 +28,8 @@ def calculate_pie_chart_angles(data):
     total_investment = sum(instrument_list)
     minimum_investment = total_investment * 0.05
     for instrument in range(len(instrument_list)):
-        if instrument_list[instrument]["quantity"] * instrument_list[instrument]["price"] < minimum_investment:
-            instrument_list[instrument]["quantity"] = minimum_investment
+        if instrument_list[instrument] < minimum_investment:
+            instrument_list[instrument] = minimum_investment
     total_investment = sum(instrument_list)
     proportions = [(instrument / total_investment) * 100 for instrument in instrument_list]
     
