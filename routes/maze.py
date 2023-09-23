@@ -7,10 +7,7 @@ from flask import request
 from routes import app
 
 logger = logging.getLogger(__name__)
-WALL = 0
-EMPTY = 1
-SPAWN = 2
-END = 3
+
 
 maze = None
 width = 0
@@ -23,7 +20,9 @@ def initialize_maze(data):
     current_position = (1, 1) 
 
 def is_valid_move(x, y):
-    return 0 <= x < width and 0 <= y < width and maze[x][y] != WALL
+    logging.info("NEW MOVE IS {}".format(maze[x][y]))
+
+    return 0 <= x < width and 0 <= y < width and maze[x][y] != 0
 
 def get_next_move(data):
     initialize_maze(data)
