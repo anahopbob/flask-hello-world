@@ -34,11 +34,11 @@ def get_next_move(data):
 
         if is_valid_move(x, y):
             if move == (0, 1):
-                return "up"
+                return "down"
             elif move == (1, 0):
                 return "right"
             elif move == (0, -1):
-                return "down"
+                return "up"
             elif move == (-1, 0):
                 return "left"
     return "respawn"
