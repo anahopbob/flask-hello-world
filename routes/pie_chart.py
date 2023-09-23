@@ -45,6 +45,7 @@ def calculate_pie_chart_angles(data):
     # Sort instruments based on proportions in descending order
     final = sorted(final, reverse=True)
     # Calculate angles for the boundaries of the slices/arcs of the pie chart
+    logging.info("My final :{}".format(final))
     angles = [0.0]
     cumulative_angle = 0.0
     for proportion in final:
