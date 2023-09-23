@@ -32,13 +32,13 @@ def get_next_move(data):
         logging.info("NEW MOVE IS {}".format(maze[x][y]))
         if is_valid_move(x, y):
             if move == (0, 1):
-                return "down"
-            elif move == (1, 0):
                 return "right"
+            elif move == (1, 0):
+                return "down"
             elif move == (0, -1):
-                return "up"
-            elif move == (-1, 0):
                 return "left"
+            elif move == (-1, 0):
+                return "up"
     return "respawn"
 
 @app.route('/maze', methods=['POST'])
